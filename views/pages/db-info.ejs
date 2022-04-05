@@ -4,15 +4,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>DB Info</title>
 </head>
 <body>
   <h1>Database Tables</h1>
   <ul>
-    <% tables.forEach(function(r) { %> 
-      <li><%= r.table %>: <%= r.column %> (<%= r.type %>)</li>
+    <% tables.forEach(function(r) { %>
+    <li><%= r.table %>: <%= r.column %> (<%= r.type %>)</li>
+    <%}); %>
+  </ul>
+  <h1>Observations</h1>
+  <ul>
+    <% obs.forEach(function(r) { %>
+      <li><%= r.tasks_id%> for <%= r.duration.minutes  || "00" %>:<%= r.duration.seconds || "00" %></li>
     <% }); %>
- </ul>
-  
+  </ul>
 </body>
 </html>
