@@ -1,5 +1,5 @@
-const express = requre('express')
-const path = requre('path')
+const express = reqiure('express')
+const path = reqiure('path')
 const PORT = process.env.PORT || 5000;
 const { Pool } = require('pg')
 
