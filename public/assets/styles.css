@@ -1,0 +1,39 @@
+body {
+  background-color: cornflowerblue;
+}
+
+#taskButtons {
+  position: relative;
+  border: 5px solid black;
+  
+}
+
+ul {
+  margin: auto;
+  padding: 10px;
+  position: relative;
+  display: inline-block;
+  top: 55%;
+  left: 50%;
+
+}
+
+ul > p {
+  display: inline;
+  height: 10px;
+  width: 10px;
+  margin: 5px;
+}
+
+#resultTitle > h3 {
+  display: inline-block;
+  top: 40%;
+  left: 50%;
+  position: relative;
+  margin: 20px;
+}
+
+
+ button {
+  position: absolute;
+ }

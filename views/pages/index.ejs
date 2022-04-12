@@ -4,18 +4,34 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/public/assets/styles.css" rel="stylesheet">
   <title>PE Tracker</title>
 </head>
 <body>
   <h1>PE Tracker</h1>
-  <% tasks.forEach(function(r) {%>
-    <button id='<%= r.id %>'
-      onClick='javascript:logTask(<%= r.id %>);'><%= r.name %></button>
-  <% }); %>
+
+  <div id="resultTitle">
+    <h3>Timer</h3>
+    <h3>Percentage</h3>
+    <h3>#</h3>
+  </div>
+  
+  <div id="taskButtons">
+    <% tasks.forEach(function(r) {%>
+      <ul>
+        <input class="timer" id='timer <%= r.id %>', value=0></input>
+        <input class="percent" id='percentage <%= r.id %>'></input>
+        <p id='<%= r.id %>'> <%= r.id %> </p>
+      </ul>
+  
+      <button id='button<%= r.id %>' onclick="javascript:logTask(<%= r.id %>, document.getElementById('timer <%= r.id %>').value)"><%= r.name %></button><br><br>
+
+    <% }); %>
+  </div>
   <script>
     let currentTaskId = null;
 
-    const logTask = async function(id) {
+    const logTask = async function(id, duration) {
       const response = await fetch('/log', {
         method: 'POST',
         headers: {
@@ -26,7 +42,7 @@
           users_id: -1,
           students_id: -1,
           task_id: id,
-          duration: "'+00:00:01'"
+          duration: duration
         })
       });
       

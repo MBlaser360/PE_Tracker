@@ -12,7 +12,7 @@ const pool = new Pool({
   }
 });
 
-express().use(express.static(path.join(__dirname, 'public'))).use(express.json()).use(express.urlencoded({ extended: true})).set('views', path.join(__dirname, 'views')).set('view engine', 'ejs').get('/', async(req, res) => {
+express().use(express.static(path.join(__dirname, 'public'))).use(express.json()).use('/public', express.static('public')).use(express.urlencoded({ extended: true})).set('views', path.join(__dirname, 'views')).set('view engine', 'ejs').get('/', async(req, res) => {
   
   try {
     const client = await pool.connect();
@@ -91,7 +91,7 @@ express().use(express.static(path.join(__dirname, 'public'))).use(express.json()
     client.release();
   } catch (err) {
     console.log(err);
-    res.send("Error" + err);
+    res.send( err);
   }
 })
 .listen(PORT, () => console.log(`listening on ${ PORT }`));
